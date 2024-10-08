@@ -1,4 +1,4 @@
-# Fila-e-pilha-dinamicas
+# Fila e pilha dinâmicas
 
 Atividade MAPA da matéria Estrutura de Dados I do curso de Graduação de Engenharia de Software (finalizado na data de 07/07/2023)
 
