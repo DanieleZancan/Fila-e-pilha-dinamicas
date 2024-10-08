@@ -15,8 +15,8 @@ Com base no contexto da genética abordado acima, você deve construir um algori
 
 Para que este algoritmo funcione de acordo com o contexto apresentado, você deve:
 
-1 - Ler a entrada de DNA com n caracteres compostos por uma sequência de nucleotídeos (A C T G) e armazená-los em uma estrutura de FILA DINÂMICA.
-2 - Ao concluir a entrada, você deve remover a sequência da fila para a dupla fita do DNA convertendo a sequência de nucleotídeos (T G A C) e armazená-los em uma estrutura de PILHA DINÂMICA.
+1 - Ler a entrada de DNA com n caracteres compostos por uma sequência de nucleotídeos (A C T G) e armazená-los em uma estrutura de FILA DINÂMICA. \
+2 - Ao concluir a entrada, você deve remover a sequência da fila para a dupla fita do DNA convertendo a sequência de nucleotídeos (T G A C) e armazená-los em uma estrutura de PILHA DINÂMICA. \
 3 - Faça a impressão de ambas as estruturas.
 
 Vale ressaltar, que a sequência de nucleotídeos é uma cadeia de caracteres (strings). Leal & Oliveira (2022), em Algoritmos e Lógica de Programação II, ressalta que um tripo string em C é um vetor do tipo char e que ao final da string é armazenado o ‘\0’, por isso é sempre necessário declarar uma string com uma posição a mais do que o número de caracteres que desejamos armazenar.
@@ -25,13 +25,13 @@ Quanto as estruturas utilizadas na solução do problema, segundo Oliveira & Per
 
 Para solucionar o problema apresentado é fundamental desenvolver as seguintes funções de cada estrutura: 
 
-Inserir na fila 
-Excluir da fila 
-Imprimir a fila 
-Inserir na pilha 
+Inserir na fila \
+Excluir da fila \
+Imprimir a fila \
+Inserir na pilha \
 Imprimir a pilha
 
 Exemplo:
 
-Fila: ACTTGACCGTTA 
+Fila: ACTTGACCGTTA \
 Pilha: TAACGGTCAAGT
