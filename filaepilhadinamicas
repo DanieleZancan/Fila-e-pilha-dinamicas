@@ -1,0 +1,165 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct No {
+    char data;
+    struct No* proximo;
+} No;
+
+typedef struct Fila {
+    No* frente;
+    No* atras;
+} Fila;
+
+typedef struct Nopilha {
+    char data;
+    struct Nopilha* proximo;
+} Nopilha;
+
+No* Novono(char data) {
+    No* no = (No*)malloc(sizeof(No));
+    no->data = data;
+    no->proximo = NULL;
+    return no;
+}
+
+Fila* criaFila() {
+    Fila* fila = (Fila*)malloc(sizeof(Fila));
+    fila->frente = fila->atras = NULL;
+    return fila;
+}
+
+void enfila(Fila* fila, char data) {
+    No* no = Novono(data);
+    if (fila->atras == NULL) {
+        fila->frente = fila->atras = no;
+        return;
+    }
+    fila->atras->proximo = no;
+    fila->atras = no;
+}
+
+char defila(Fila* fila) {
+    if (fila->frente == NULL)
+        return '\0';
+    No* temp = fila->frente;
+    char data = temp->data;
+    fila->frente = fila->frente->proximo;
+    if (fila->frente == NULL)
+        fila->atras = NULL;
+    free(temp);
+    return data;
+}
+
+void printFila(Fila* fila) {
+    No* temp = fila->frente;
+    while (temp != NULL) {
+        printf("%c", temp->data);
+        temp = temp->proximo;
+    }
+    printf("\n");
+}
+
+Nopilha* novono(char data) {
+    Nopilha* nopilha = (Nopilha*)malloc(sizeof(Nopilha));
+    nopilha->data = data;
+    nopilha->proximo = NULL;
+    return nopilha;
+}
+
+void push(Nopilha** root, char data) {
+    Nopilha* nopilha = novono(data);
+    nopilha->proximo = *root;
+    *root = nopilha;
+}
+
+void printStack(Nopilha* root) {
+    while (root != NULL) {
+        printf("%c", root->data);
+        root = root->proximo;
+    }
+    printf("\n");
+}
+
+void pilhag(Nopilha** root) {
+    Nopilha* temp;
+    while (*root != NULL) {
+        temp = *root;
+        *root = (*root)->proximo;
+        free(temp);
+    }
+}
+
+void fFila(Fila* fila) {
+    No* temp;
+    while (fila->frente != NULL) {
+        temp = fila->frente;
+        fila->frente = fila->frente->proximo;
+        free(temp);
+    }
+    free(fila);
+}
+
+char complement(char nucleotide) {
+    switch (nucleotide) {
+        case 'A': return 'T';
+        case 'T': return 'A';
+        case 'G': return 'C';
+        case 'C': return 'G';
+        default: return '\0';
+    }
+}
+
+int isValidChar(char nucleotide) {
+    return nucleotide == 'A' || nucleotide == 'T' || nucleotide == 'C' || nucleotide == 'G';
+}
+
+int main() {
+    Fila* fila = criaFila();
+    Nopilha* stack = NULL;
+    char sequencia[200];
+    int validInput = 0;
+
+    while (!validInput) {
+        printf("Digite sua sequencia de DNA por favor (apenas caracteres A, T, C e G): ");
+        scanf("%s", sequencia);
+
+        validInput = 1; 
+
+        for (int i = 0; sequencia[i] != '\0'; i++) {
+            if (!isValidChar(sequencia[i])) {
+                printf("Entrada inválida: caractere '%c' não permitido.\n", sequencia[i]);
+                validInput = 0; 
+                break;
+            }
+        }
+    }
+
+    for (int i = 0; sequencia[i] != '\0'; i++) {
+        enfila(fila, sequencia[i]);
+    }
+
+    printf("Fila: ");
+    printFila(fila);
+
+    for (int i = 0; i < strlen(sequencia); i++) {
+        char defilar = defila(fila);
+        if (defilar == '\0') {
+            printf("Erro ao desenfileirar.\n");
+            fFila(fila);
+            pilhag(&stack);
+            return 1;
+        }
+        char complementNucleotide = complement(defilar);
+        push(&stack, complementNucleotide);
+    }
+
+    printf("Pilha: ");
+    printStack(stack);
+
+    fFila(fila);
+    pilhag(&stack);
+
+    return 0;
+}
