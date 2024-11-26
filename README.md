@@ -1,7 +1,5 @@
 # Fila e pilha dinâmicas
 
-Atividade MAPA da matéria Estrutura de Dados I do curso de Graduação de Engenharia de Software (finalizado na data de 07/07/2023)
-
 Criação de um programa na linguagem C para ler as entradas, armazená-las e removê-las das estruturas de Fila e Pilha Dinâmicas, seguindo os seguintes critérios e instruções:
 
 "O DNA (ácido desoxirribonucleico) é um tipo de ácido nucleico que armazena a informação genética da grande maioria dos seres vivos. Essa molécula é formada por nucleotídeos e apresenta, geralmente, a forma de uma dupla-hélice. As bases nitrogenadas estão classificadas em dois grupos: as pirimidinas e purinas. Citosina (C), timina (T) e uracila (U) são pirimidinas, enquanto a adenina (A) e a guanina (G) são purinas. Das bases nitrogenadas citadas, apenas a uracila não é observada no DNA." 
